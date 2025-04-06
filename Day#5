@@ -1,0 +1,77 @@
+#include <iostream>
+#include <windows.h>
+#include <vector>
+#include<algorithm>
+using namespace std;
+
+struct Student {
+    string name;
+    int kor, math, eng;
+    int total;
+    double average;
+};
+bool compareByTotal(const Student& a, const Student& b) {
+    return a.total > b.total; // 총점 높은 순으로
+}
+
+void printstu(vector<Student> input) {
+    cout << "\n[전체 학생 목록]\n";
+    cout << "이름\t국어\t수학\t영어\t총점\t평균\n";
+    for (int i = 0; i < input.size(); i++) {
+        cout << input[i].name << "\t";
+        cout << input[i].kor << "\t";
+        cout<< input[i].math << "\t";
+        cout<< input[i].eng << "\t";
+        cout<< input[i].total << "\t";
+        cout<< input[i].average << "\n";
+    }
+    cout << "\n";
+}
+
+int main() {
+    SetConsoleOutputCP(CP_UTF8);
+    vector<Student> students;
+
+    while (true) {
+        int choice;
+        cout << "학생 성적 관리 프로그램\n";
+        cout << "1. 학생 정보 입력\n2. 전체 학생 출력\n3.성적순 정렬\n4. 종료\n선택: ";
+        cin >> choice;
+
+        if (choice == 1) {
+            Student stu;
+            cout << "[학생 입력]\n";
+            cout << "이름 : ";
+            cin >> stu.name;
+            cout << "국어: ";
+            cin >> stu.kor;
+            cout << "수학: ";
+            cin >> stu.math;
+            cout << "영어: ";
+            cin >> stu.eng;
+
+            stu.total = stu.kor + stu.math + stu.eng;
+            stu.average = stu.total / 3.0;
+
+            students.push_back(stu);
+
+            cout << "✅ 저장 완료!\n\n";
+        } else if (choice == 2) {
+            printstu(students);
+        }else if(choice ==3){
+            if (students.empty()) {
+                cout << "학생 정보가 없습니다.\n";
+            } else {
+                sort(students.begin(), students.end(), compareByTotal);
+                cout << "✅ 총점 기준 정렬 완료!\n";
+            }
+        }else if (choice == 4) {
+            cout << "프로그램을 종료합니다.\n";
+            break;
+        } else {
+            cout << "⚠️ 잘못된 입력입니다.\n";
+        }
+    }
+
+    return 0;
+}
