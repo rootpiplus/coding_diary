@@ -1,0 +1,38 @@
+short rande(int less, int big) {
+    srand(time(0));
+    return rand() % big + less;
+}
+
+void gugudan() {
+    int score = 0;
+    for (int i = 1; i <= 5; i++) {
+        int first = rande(2, 9), twice = rande(1, 9), answer;
+        cout << i << "번 문제 : " << first << " x " << twice << " = ";
+        cin >> answer;
+        if (first * twice == answer) {
+            cout << "정답!!\n";
+            score++;
+        } else {
+            cout << "틀렸어요\n";
+        }
+    }
+
+    cout << "당신의 점수는 " << score << "점 입니다!\n 당신은 ";
+    if (score == 5)
+        cout << "구구단 고수입니다!!\n";
+    else if (score >= 3)
+        cout << "구구단 중수입니다 더 노력해보세요\n";
+    else
+        cout << "구구단 연습을 해보세요\n";
+}
+
+int main() {
+    SetConsoleOutputCP(CP_UTF8);
+    while (true) {
+        string cont;
+        gugudan();
+        cout << "다시 해보시겠습니까?(네/아니오): ";
+        cin >> cont;
+        if (cont != "네") break;
+    }
+}
