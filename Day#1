@@ -1,0 +1,31 @@
+#include<iostream>
+#include<random>
+#include<chrono>
+#include<ctime>
+#include<windows.h>
+using namespace std;
+
+int main() {
+    SetConsoleOutputCP(CP_UTF8);
+    int gesu = 0;
+    srand(time(0));
+    short Number = rand() % 100 + 1;
+
+    cout << "숫자 맞추기 게임을 시작합니다!\n";
+    cout << "1부터 100 사이의 숫자를 맞춰보세요.\n\n";
+
+    while (1) {
+        int num;
+        cout << "숫자 입력: ";
+        gesu++;
+        cin >> num;
+        if (num == Number) {
+            cout << "정답입니다! 총 시도 횟수: " << gesu << "회\n";
+            break;
+        } else if (num > Number) {
+            cout << "너무 커요!\n";
+        } else {
+            cout << "너무 작아요!\n";
+        }
+    }
+}
