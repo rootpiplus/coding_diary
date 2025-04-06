@@ -1,0 +1,28 @@
+void wow(int app) {
+    cout << "[ " << app << "단 ]\n";
+    for (int i = 1; i <= 9; i++) {
+        cout << app << " x " << i << " = " << i * app << "\n";
+    }
+}
+
+int main() {
+    SetConsoleOutputCP(CP_UTF8);
+    while (true) {
+        string choose;
+        cout << "구구단 출력기\n";
+        cout << "1. 특정 단 출력\n2. 전체 출력\n3. 종료\n선택: ";
+        cin >> choose;
+        if (choose == "1") {
+            int input;
+            cout << "출력할 단을 입력하세요: ";
+            cin >> input;
+            wow(input);
+        } else if (choose == "2") {
+            for (int i = 1; i <= 9; i++) wow(i);
+        } else if (choose == "3") {
+            break;
+        } else {
+            cout << "알 수 없는 명령입니다\n";
+        }
+    }
+}
