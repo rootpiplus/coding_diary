@@ -1,0 +1,29 @@
+bool yeansan() {
+    string continueds;
+    int first, twice, answer;
+    char op;
+    SetConsoleOutputCP(CP_UTF8);
+
+    cout << "숫자 1 입력: ";
+    cin >> first;
+    cout << "연산자 입력 (+, -, *, /): ";
+    cin >> op;
+    cout << "숫자 2 입력: ";
+    cin >> twice;
+
+    if (op == '+') {
+        cout << "결과: " << first << " + " << twice << " = " << first + twice << "\n";
+    } else if (op == '-') {
+        cout << "결과: " << first << " - " << twice << " = " << first - twice << "\n";
+    } else if (op == '*') {
+        cout << "결과: " << first << " * " << twice << " = " << first * twice << "\n";
+    } else if (op == '/' && twice == 0) {
+        cout << "오류: 0으로 나눌 수 없습니다.\n";
+    } else {
+        cout << "결과: " << first << " / " << twice << " = " << first / twice << "\n";
+    }
+
+    cout << "계속하시겠습니까? (y/n): ";
+    cin >> continueds;
+    return continueds != "n";
+}
